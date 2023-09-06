@@ -1,3 +1,4 @@
+# 14:00 06/09
 create database web_thue_nha;
 
 use web_thue_nha;

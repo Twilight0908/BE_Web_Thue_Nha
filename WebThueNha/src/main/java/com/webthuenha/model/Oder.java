@@ -5,22 +5,33 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
-@Data
 @Entity
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Account {
+public class Oder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(nullable = false)
-    private String username;
+    private LocalDate dateStart;
 
     @Column(nullable = false)
-    private String password;
+    private double totalPrice;
+
+    @Column(nullable = false)
+    private int numberOfMonths;
 
     @ManyToOne
-    private Role role;
+    private Account account;
+
+    @Column(nullable = false)
+    private double presentPrice;
+
+    @ManyToOne
+    private Room room;
+
 }
