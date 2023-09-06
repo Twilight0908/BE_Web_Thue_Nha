@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "room")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,15 +15,9 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-
-//    @Column
-//    private String title;
-    // tao thuoc tinh title kieu text khong phai kieu varchar
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT", nullable = false)
     private String title;
-//    @Column
-//    private double square;
-    // tao truong xet rang buoc not null cho square
+
     @Column(nullable = false)
     private double square;
 
@@ -46,7 +39,7 @@ public class Room {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String detail;
 
-    @Column(nullable = false)
+    @Column(columnDefinition = "TEXT", nullable = false)
     private String address;
 
     @ManyToOne
