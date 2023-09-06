@@ -1,23 +1,21 @@
 package com.webthuenha.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.security.core.GrantedAuthority;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Data
 @Entity
-public class Role implements GrantedAuthority {
+@Table(name = "category")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(nullable = false)
     private String name;
-
-    @Override
-    public String getAuthority() {
-
-        return name;
-    }
 }
