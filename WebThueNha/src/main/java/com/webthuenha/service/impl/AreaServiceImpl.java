@@ -15,13 +15,11 @@ public class AreaServiceImpl implements IAreaService {
 
     @Override
     public Area save(Area area) {
-
         return iAreaRepo.save(area);
     }
 
     @Override
     public Area edit(Area area) {
-
         return iAreaRepo.save(area);
     }
 

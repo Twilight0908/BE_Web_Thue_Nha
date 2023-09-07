@@ -1,7 +1,7 @@
 package com.webthuenha.controller;
 
 import com.webthuenha.model.Area;
-import com.webthuenha.service.impl.AreaServiceImpl;
+import com.webthuenha.service.iService.IAreaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,50 +10,49 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/area")
 public class AreaController {
     @Autowired
-    AreaServiceImpl areaService;
+    private IAreaService areaService;
 
     @GetMapping
-    public ResponseEntity<List<Area>> getAll(){
+    public ResponseEntity<List<Area>> getAllAreas() {
         List<Area> areaList = areaService.getAll();
-        if (areaList.isEmpty()){
-            // tra ve loi 204
-            return ResponseEntity.status(204).build();
+        if (areaList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return ResponseEntity.ok(areaList);
+        return new ResponseEntity<>(areaList, HttpStatus.OK);
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<Area> addArea(@RequestBody Area area){
+    @PostMapping("/add")
+    public ResponseEntity<Area> addArea(@RequestBody Area area) {
         return new ResponseEntity<>(areaService.save(area), HttpStatus.CREATED);
     }
 
     @GetMapping("/edit/{id}")
-    public ResponseEntity<Area> getAccount(@PathVariable int id) {
+    public ResponseEntity<Area> getArea(@PathVariable int id) {
         Area currentArea = areaService.findById(id);
         if (currentArea == null) {
-            return ResponseEntity.status(204).build();
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(currentArea, HttpStatus.OK);
     }
 
     @PostMapping("/edit/{id}")
-    public ResponseEntity<Area> editAccount(@RequestBody Area area, @PathVariable int id) {
+    public ResponseEntity<Area> editArea(@RequestBody Area area, @PathVariable int id) {
         Area currentArea = areaService.findById(id);
         if (currentArea == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-//        currentArea.setId(area.getId());
         currentArea.setName(area.getName());
 
         return new ResponseEntity<>(areaService.edit(currentArea), HttpStatus.OK);
     }
 
     @GetMapping("/delete/{id}")
-    public ResponseEntity<Area> deleteAccount(@PathVariable int id) {
+    public ResponseEntity<Area> deleteArea(@PathVariable int id) {
         if (areaService.findById(id) == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
