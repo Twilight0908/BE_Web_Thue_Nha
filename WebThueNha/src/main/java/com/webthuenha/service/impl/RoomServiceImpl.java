@@ -15,26 +15,26 @@ public class RoomServiceImpl implements IRoomService {
 
     @Override
     public Room save(Room room) {
-        return null;
+        return iRoomRepo.save(room);
     }
 
     @Override
     public Room edit(Room room) {
-        return null;
+        return iRoomRepo.save(room);
     }
 
     @Override
     public void delete(int id) {
-
+        iRoomRepo.deleteById(id);
     }
 
     @Override
     public Room findById(int id) {
-        return null;
+        return iRoomRepo.findById(id).get();
     }
 
     @Override
     public List<Room> getAll() {
-        return null;
+        return (List<Room>) iRoomRepo.findAll();
     }
 }
