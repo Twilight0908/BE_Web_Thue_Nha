@@ -15,26 +15,26 @@ public class ImageServiceImpl implements IImageService {
 
     @Override
     public Image save(Image image) {
-        return null;
+        return iImageRepo.save(image);
     }
 
     @Override
     public Image edit(Image image) {
-        return null;
+        return iImageRepo.save(image);
     }
 
     @Override
     public void delete(int id) {
-
+        iImageRepo.deleteById(id);
     }
 
     @Override
     public Image findById(int id) {
-        return null;
+        return iImageRepo.findById(id).get();
     }
 
     @Override
     public List<Image> getAll() {
-        return null;
+        return (List<Image>) iImageRepo.findAll();
     }
 }
