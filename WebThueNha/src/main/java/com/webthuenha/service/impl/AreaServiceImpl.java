@@ -15,26 +15,28 @@ public class AreaServiceImpl implements IAreaService {
 
     @Override
     public Area save(Area area) {
-        return null;
+
+        return iAreaRepo.save(area);
     }
 
     @Override
     public Area edit(Area area) {
-        return null;
+
+        return iAreaRepo.save(area);
     }
 
     @Override
     public void delete(int id) {
-
+        iAreaRepo.deleteById(id);
     }
 
     @Override
     public Area findById(int id) {
-        return null;
+        return iAreaRepo.findById(id).get();
     }
 
     @Override
     public List<Area> getAll() {
-        return null;
+        return (List<Area>) iAreaRepo.findAll();
     }
 }
