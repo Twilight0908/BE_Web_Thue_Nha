@@ -15,26 +15,26 @@ public class CategoryServiceImpl implements ICategoryService {
 
     @Override
     public Category save(Category category) {
-        return null;
+        return iCategoryRepo.save(category);
     }
 
     @Override
     public Category edit(Category category) {
-        return null;
+        return iCategoryRepo.save(category);
     }
 
     @Override
     public void delete(int id) {
-
+        iCategoryRepo.deleteById(id);
     }
 
     @Override
     public Category findById(int id) {
-        return null;
+        return iCategoryRepo.findById(id).get();
     }
 
     @Override
     public List<Category> getAll() {
-        return null;
+        return (List<Category>) iCategoryRepo.findAll();
     }
 }
