@@ -35,6 +35,17 @@ public class RoomServiceImpl implements IRoomService {
 
     @Override
     public List<Room> getAll() {
-        return null;
+
+        return (List<Room>) iRoomRepo.findAll();
+    }
+
+    public List<Room> findAllByArea(int id) {
+        List<Room> rooms = iRoomRepo.findAllByArea(id);
+        return rooms;
+    }
+
+    public List<Room> findAllByCategory(int id) {
+        List<Room> rooms = iRoomRepo.findAllByCategory(id);
+        return rooms;
     }
 }
