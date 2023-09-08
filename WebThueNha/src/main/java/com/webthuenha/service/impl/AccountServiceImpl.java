@@ -24,6 +24,11 @@ public class AccountServiceImpl implements IAccountService {
     }
 
     @Override
+    public int checkAccountUsername(String checkUsername) {
+        return iAccountRepo.checkAccountUsername(checkUsername);
+    }
+
+    @Override
     public Account save(Account account) {
         return iAccountRepo.save(account);
     }
