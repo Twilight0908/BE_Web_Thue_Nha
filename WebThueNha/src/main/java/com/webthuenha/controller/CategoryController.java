@@ -1,8 +1,6 @@
 package com.webthuenha.controller;
 
-import com.webthuenha.model.Account;
 import com.webthuenha.model.Category;
-import com.webthuenha.repository.ICategoryRepo;
 import com.webthuenha.service.iService.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -60,5 +58,4 @@ public class CategoryController {
         iCategoryService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 }

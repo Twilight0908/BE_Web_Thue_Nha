@@ -60,4 +60,23 @@ public class RoomController {
 
         return new ResponseEntity<>(iRoomService.edit(currentRoom), HttpStatus.OK);
     }
+
+
+    @GetMapping("/findAllByArea/{id}")
+    public ResponseEntity<List<Room>> getAllRooms(@PathVariable int id) {
+        List<Room> roomList = iRoomService.findAllByArea(id);
+        if (roomList.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(roomList);
+    }
+
+    @GetMapping("/findAllByCategory/{id}")
+    public ResponseEntity<List<Room>> getAllRoomsByCategory(@PathVariable int id) {
+        List<Room> roomList = iRoomService.findAllByCategory(id);
+        if (roomList.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(roomList);
+    }
 }
