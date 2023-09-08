@@ -27,9 +27,6 @@ public class AccountController {
 
     @PostMapping("/add")
     public ResponseEntity<Account> addAccount(@RequestBody Account account) {
-        if(!checkAccount(account)) {
-            return null;
-        }
         return new ResponseEntity<>(accountService.save(account), HttpStatus.CREATED);
     }
 
@@ -65,12 +62,4 @@ public class AccountController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping("/checkAccount")
-    public boolean checkAccount (@RequestBody Account account) {
-        if(accountService.checkAccountUsername(account.getUsername())!=0) {
-            return false;
-        }else {
-            return true;
-        }
-    }
 }

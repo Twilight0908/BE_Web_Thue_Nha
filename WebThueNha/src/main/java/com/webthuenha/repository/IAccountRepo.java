@@ -11,5 +11,5 @@ public interface IAccountRepo extends CrudRepository<Account, Integer> {
     Account findByUsername(String username);
     @Query(
     value="select COUNT(*) from Account where username = :checkUsername")
-    public int checkAccountUsername(@Param("checkUsername")String checkUsername);
+    int checkAccountUsername(@Param("checkUsername")String checkUsername);
 }
