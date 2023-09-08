@@ -15,26 +15,26 @@ public class OderServiceImpl implements IOderService {
 
     @Override
     public Oder save(Oder oder) {
-        return null;
+        return iOderRepo.save(oder);
     }
 
     @Override
     public Oder edit(Oder oder) {
-        return null;
+        return iOderRepo.save(oder);
     }
 
     @Override
     public void delete(int id) {
-
+        iOderRepo.deleteById(id);
     }
 
     @Override
     public Oder findById(int id) {
-        return null;
+        return iOderRepo.findById(id).get();
     }
 
     @Override
     public List<Oder> getAll() {
-        return null;
+        return (List<Oder>) iOderRepo.findAll();
     }
 }
