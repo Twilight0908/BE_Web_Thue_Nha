@@ -1,5 +1,5 @@
 package com.webthuenha.controller;
-import com.webthuenha.model.Account;
+
 import com.webthuenha.model.Room;
 import com.webthuenha.service.iService.IRoomService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +13,11 @@ import java.util.List;
 @CrossOrigin("*")
 @RequestMapping("/room")
 public class RoomController {
-
     @Autowired
-    IRoomService iRoomService;
+    private IRoomService iRoomService;
 
     @GetMapping
-    public ResponseEntity<List<Room>> getAllRoom() {
+    public ResponseEntity<List<Room>> getAllRooms() {
         List<Room> roomsList = iRoomService.getAll();
         if (roomsList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -28,7 +27,7 @@ public class RoomController {
 
     @PostMapping("/add")
     public ResponseEntity<Room> addRoom(@RequestBody Room room) {
-        return new ResponseEntity<>(iRoomService.save(room),HttpStatus.CREATED);
+        return new ResponseEntity<>(iRoomService.save(room), HttpStatus.CREATED);
     }
 
     @GetMapping("/edit/{id}")
@@ -46,6 +45,7 @@ public class RoomController {
         if (currentRoom == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+
         currentRoom.setTitle(room.getTitle());
         currentRoom.setSquare(room.getSquare());
         currentRoom.setNumberOfRooms(room.getNumberOfRooms());
@@ -57,6 +57,7 @@ public class RoomController {
         currentRoom.setAddress(room.getAddress());
         currentRoom.setCategory(room.getCategory());
         currentRoom.setArea(room.getArea());
+
         return new ResponseEntity<>(iRoomService.edit(currentRoom), HttpStatus.OK);
     }
 }
