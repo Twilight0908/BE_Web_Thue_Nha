@@ -57,4 +57,13 @@ public class ImageController {
         imageService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping("/findImagesByRoomID/{id}")
+    public ResponseEntity<List<String>> findImagesByRoomID(@PathVariable int id) {
+        List<String> listImages = imageService.findImageByRoomID(id);
+        if (listImages == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(listImages, HttpStatus.OK);
+    }
 }
