@@ -66,4 +66,13 @@ public class ImageController {
         }
         return new ResponseEntity<>(listImages, HttpStatus.OK);
     }
+
+    @GetMapping("/findAllByRoom/{id}")
+    public ResponseEntity<List<Image>> getAllImagesByIdRoom(@PathVariable int id) {
+        List<Image> imagesList = imageService.findAllByIdRoom(id);
+        if (imagesList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(imagesList, HttpStatus.OK);
+    }
 }

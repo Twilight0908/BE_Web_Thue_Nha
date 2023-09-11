@@ -42,4 +42,9 @@ public class ImageServiceImpl implements IImageService {
     public List<String> findImageByRoomID(int roomID) {
         return iImageRepo.findImageByRoomID(roomID);
     }
+
+    @Override
+    public List<Image> findAllByIdRoom(int idRoom) {
+        return iImageRepo.findAllByIdRoom(idRoom);
+    }
 }

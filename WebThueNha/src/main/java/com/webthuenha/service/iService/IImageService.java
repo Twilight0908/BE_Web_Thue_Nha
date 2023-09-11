@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface IImageService extends IService<Image> {
     List<String> findImageByRoomID(int roomID);
+    List<Image> findAllByIdRoom(int idRoom);
 }
