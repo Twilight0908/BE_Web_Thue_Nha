@@ -10,6 +10,9 @@ import com.webthuenha.service.iService.IRoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -27,8 +30,14 @@ public class OderController {
 
     @PostMapping("/oderRoom")
     public ResponseEntity<Oder> roomInfoReceived(@RequestBody UserRoomObject userRoomObject) {
+        String username="";
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication.isAuthenticated()) {
+            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+            username = userDetails.getUsername();
+        }
+        Account account = iAccountService.findByUsername(username);
         Room room = iRoomService.findById(userRoomObject.getRoomID());
-        Account account = iAccountService.findById(userRoomObject.getUserID());
         System.out.println(room);
         System.out.println(account);
         Oder oder = new Oder();
