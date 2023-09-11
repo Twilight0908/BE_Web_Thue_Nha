@@ -8,4 +8,5 @@ public interface IRoomService extends IService<Room> {
     List<Room> findAllByArea(int id);
 
     List<Room> findAllByCategory(int id);
+
 }

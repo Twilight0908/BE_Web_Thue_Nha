@@ -30,7 +30,7 @@ public class RoomController {
         return new ResponseEntity<>(iRoomService.save(room), HttpStatus.CREATED);
     }
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("/detailRoom/{id}")
     public ResponseEntity<Room> getRoomByID(@PathVariable int id) {
         Room currentRoom = iRoomService.findById(id);
         if (currentRoom == null) {

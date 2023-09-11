@@ -30,6 +30,7 @@ public class RoomServiceImpl implements IRoomService {
 
     @Override
     public Room findById(int id) {
+
         return iRoomRepo.findById(id).get();
     }
 
